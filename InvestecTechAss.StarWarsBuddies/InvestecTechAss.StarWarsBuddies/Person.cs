@@ -1,44 +1,20 @@
-﻿//// See https://aka.ms/new-console-template for more information
-//using System.Text.Json.Serialization;
-
-//internal class Person
-//{
-
-//    [JsonPropertyName("name")]
-//    internal string Name { get; set; }
-
-
-//    [JsonPropertyName("height")]
-//    internal string Height { get; set; }
-
-
-//    [JsonPropertyName("mass")]
-//    internal string Mass { get; set; }
-
-//    [JsonPropertyName("hair_color")]
-//    internal string HairColour { get; set; }
-
-//    [JsonPropertyName("skin_color")]
-//    internal string SkinColour { get; set; }
-
-//    [JsonPropertyName("eye_color")]
-//    internal string EyeColour { get; set; }
-
-//    [JsonPropertyName("birth_year")]
-//    internal string BirthYear { get; set; }
-
-//    [JsonPropertyName("gender")]
-//    internal string Gender { get; set; }
-
-//    [JsonPropertyName("homeworld")]
-//    internal string HomeWorldUrl { get; set; }
-
-//    [JsonPropertyName("films")]
-//    internal string[] FilmUrls { get; set; }
-
-//    [JsonPropertyName("species")]
-//    internal string[] SpeciesUrls { get; set; }
-
-//    [JsonPropertyName("vehicles")]
-//    internal string[] VehiclesUrls { get; set; }
-//}
+﻿
+public class Person
+{
+    public string name { get; set; }
+    public string height { get; set; }
+    public string mass { get; set; }
+    public string hair_color { get; set; }
+    public string skin_color { get; set; }
+    public string eye_color { get; set; }
+    public string birth_year { get; set; }
+    public string gender { get; set; }
+    public string homeworld { get; set; }
+    public string[] films { get; set; }
+    public string[] species { get; set; }
+    public string[] vehicles { get; set; }
+    public string[] starships { get; set; }
+    public DateTime created { get; set; }
+    public DateTime edited { get; set; }
+    public string url { get; set; }
+}

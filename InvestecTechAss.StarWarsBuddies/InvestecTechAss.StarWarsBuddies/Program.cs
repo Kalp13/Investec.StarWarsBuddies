@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Net.Http.Json;
+using System.Linq;
 
 var starwarsUrl = @"https://swapi.dev/api/people";
 var hasNextPage = false;
@@ -22,7 +23,8 @@ do
             
         });
 
-        hasNextPage = result.next != null;
+        hasNextPage = !String.IsNullOrWhiteSpace(result.next);
+        starwarsUrl = result.next;
         people.AddRange(result.results);
 
         Console.WriteLine(response);
@@ -30,13 +32,18 @@ do
 }
 while (hasNextPage);
 
-var buddies = string.Empty;
+var buddies = new List<string>();
 foreach (var person in people)
 {
-    if (people.Any(x => x.films == person.films))
+    var otherPeople = people.Where(x => x.name.ToLower() != person.name.ToLower()).ToList();
+    var sameFilmCount = otherPeople.Where(x => x.films.Length == person.films.Length).ToList();
+    if (sameFilmCount.Select(x => x.films.Order()).Any(x => x.SequenceEqual(person.films.Order())))
     {
-        buddies += $"{person.name},";
+        buddies.Add($"{person.name}");
     }
 }
+var uniqueNames = buddies.Distinct();
 
-Console.WriteLine(buddies);
+Console.WriteLine(String.Join(',', uniqueNames));
+
+Console.ReadLine();
